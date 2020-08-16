@@ -1,0 +1,15 @@
+def contentSpec = copySpec {
+	exclude '1.gif', '2.gif'
+	from 'files_to_move'
+}
+
+task copyImagesWithSpec (type: Copy) {
+	with contentSpec
+	into 'moved_files'
+}
+
+task copyImages (type: Copy) {
+	exclude '1.gif', '3.gif'
+	from 'files_to_move'
+	into 'moved_files'
+}

@@ -1,0 +1,29 @@
+def version = "2.1"
+ext.projectversion = "5.5"
+
+project.task("Task1")
+task("Task2")
+task "Task3"
+task Task4
+
+Task1.doFirst{println "version is $version"}
+
+Task2.doFirst{println "Task2 dofirst the project version set on the project is $projectversion and this variable is available in any build file on this project since it is set on the project"}
+
+Task4.description = "Task 4 Description"
+Task4.doLast{println "This is Task 4"}
+
+Task3.doLast{println "This is task 3"}
+
+task Task5 {
+	description = "task 5 description"
+	doLast{println "this is task5"}
+}
+
+Task5.doLast{println "Another closure"}
+Task5.doFirst{println "This happens first in Task 5"}
+
+
+Task5.dependsOn "Task3"
+Task3.dependsOn "Task4"
+Task4.dependsOn "Task2"

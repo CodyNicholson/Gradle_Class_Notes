@@ -1,0 +1,9 @@
+task copyConfig (type: Copy) {
+	include 'text.txt'
+	from 'src'
+	into 'config'
+	expand (
+		[beforeText: 'after/text']
+	)
+}
+
